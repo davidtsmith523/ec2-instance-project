@@ -95,17 +95,19 @@
     </style>
   </head>
   <body>
-    <h1>DynamoDB CRUD Operations</h1>
+    <h1>DynamoDB and S3 Bucket CRUD Operations</h1>
 
     <!-- Form for creating new item -->
     <h2 class="text-center">Create Item</h2>
-    <form action="/create" method="POST">
+    <form action="/create" method="POST" enctype="multipart/form-data">
       <label for="id">ID:</label>
-      <input type="text" id="id" name="id" required />
+      <input type="text" id="id" name="id" required /><br /><br />
       <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
+      <input type="text" id="name" name="name" required /><br /><br />
       <label for="email">Email:</label>
-      <input type="text" id="email" name="email" required />
+      <input type="text" id="email" name="email" required /><br /><br />
+      <label for="image">Upload Image:</label>
+      <input type="file" id="image" name="image" /><br /><br />
       <input type="submit" value="Create" />
     </form>
 
@@ -116,7 +118,8 @@
       <li>
         <div>
           <strong>ID:</strong> {{ item.id }} | <strong>Name:</strong> {{
-          item.name }} | <strong>Email:</strong> {{ item.email }}
+          item.name }} | <strong>Email:</strong> {{ item.email }} |
+          <strong>Image</strong> {{ item.image_url }}
         </div>
         <div class="btn-group">
           <a href="/update/{{ item.id }}" class="btn btn-sm btn-primary"

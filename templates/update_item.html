@@ -80,7 +80,11 @@
   <body>
     <h1>Update Item</h1>
 
-    <form action="/update/{{ item.id }}" method="POST">
+    <form
+      action="/update/{{ item.id }}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
       <label for="name">Name:</label>
       <input
         type="text"
@@ -88,7 +92,7 @@
         name="name"
         value="{{ item.name }}"
         required
-      />
+      /><br /><br />
       <label for="email">Email:</label>
       <input
         type="text"
@@ -96,6 +100,18 @@
         name="email"
         value="{{ item.email }}"
         required
+      /><br /><br />
+      <label for="image">Upload New Image:</label>
+      <input type="file" id="image" name="image" /><br /><br />
+      <img
+        src="{{ item.image_url }}"
+        alt="Current"
+        style="max-width: 200px; margin-top: 10px"
+      />
+      <input
+        type="hidden"
+        name="current_image_url"
+        value="{{ item.image_url }}"
       />
       <input type="submit" value="Update" />
     </form>
